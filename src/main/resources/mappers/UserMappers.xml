@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.green.greengram2.user.UserMappers">
+    <insert id="usersignup" useGeneratedKeys="true" keyProperty="iuser">
+        insert into t_user
+        set uid = #{uid},
+        upw = #{upw},
+        nm = #{nm}
+        <if test="pic != null and pic != ''">
+            ,pic = #{pic}
+        </if>
+    </insert>
+
+    <select id="seluserbyid">
+        select iuser, upw, nm, pic
+        from t_user
+        where uid = #{uid}
+    </select>
+
+    <select id="userinfovo">
+        SELECT count(DISTINCT a.ifeed) AS feedCnt,
+        COUNT(b.ifeed) AS favCnt, c.nm, c.created_at AS createdAt, c.pic
+        FROM t_feed a
+        left JOIN t_feed_fav b
+        ON a.ifeed = b.ifeed
+        right join t_user c
+        ON a.iuser = c.iuser
+        WHERE c.iuser = #{targetIuser}
+    </select>
+
+    <update id="userpatch">
+        update t_user
+        set pic = #{pic}
+        where iuser = #{iuser}
+    </update>
+</mapper>
