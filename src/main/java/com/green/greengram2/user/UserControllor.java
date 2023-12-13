@@ -28,6 +28,9 @@ public class UserControllor {
         log.info("dto : {}", dto);
         return service.userSignin(dto);
     }
+    // /api/user/signin
+    // "uid" : "ddd",
+    // "upw" : "aaa"
 
     @Operation(summary = "회원가입", description = "회원가입 처리")
     @PostMapping("/signup")
@@ -43,16 +46,28 @@ public class UserControllor {
 
         return new ResVo(result);
     }
+    // /api/user/signup
+    //  "uid" : "ddd",
+    //  "upw" : "aaa",
+    //  "nm" : "동현",
+    //  "pic" : "dasd"
+
+
     @GetMapping
     @Operation(summary = "유저 정보", description = "프로필 화면에서 사용할 프로필")
     public UserInfoVo getUserInfo(@RequestParam("target_iuser") int targetIuser) {
         log.info("targetIuser : {}", targetIuser);
         return service.userinfovo(targetIuser);
     }
+    ///api/user?target_iuser=3
 
     //수정 성공 result : 1, 수정 실패 result : 0
     @PatchMapping("/pic")
     public ResVo patchUserProfile(@RequestBody UserPatchPicDto dto) {
         return service.userpatch(dto);
     }
+
+    //  /api/user/pic
+    //  "iuser" : 3,
+    //  "pic" : "dasff"
 }

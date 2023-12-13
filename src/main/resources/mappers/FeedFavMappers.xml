@@ -4,7 +4,8 @@
 <mapper namespace="com.green.greengram2.feed.FeedFavMappers">
     <delete id="delfeedfav">
         delete from t_feed_fav
-        where ifeed = #{ifeed} and iuser = #{iuser}
+        where ifeed = #{ifeed}
+        and iuser = #{iuser}
     </delete>
 
     <insert id="insfeedfav">

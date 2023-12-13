@@ -30,7 +30,6 @@ public class FeedControllor {
             , @Parameter(name="location", description = "위치")
             , @Parameter(name="pics", description = "사진")
     })
-
     @PostMapping
     public ResVo postFeed(@RequestBody FeedInsDto dto) {
         log.info("dto : {}", dto);

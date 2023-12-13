@@ -10,11 +10,10 @@
     </insert>
 
     <!-- FeedCommentSelDto -->
-    
 
     <!-- FeedCommentSelVo -->
     <select id="selCommentAll">
-        select a.ifeed_comment as ifeedComment, a.comment, a.created_at as createdAt
+        select a.ifeed_comment as ifeedComment, a.Comment, a.created_at as createdAt
         , b.iuser as writerIuser, b.nm as writerNm, b.pic as writerPic
         from t_feed_comment a
         inner join t_user b

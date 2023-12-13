@@ -20,7 +20,7 @@ public class FeedService {
         if(dto.getPics().size() == 0) {
             return new ResVo(2);
         }
-        FeedInsVo dto1 = new FeedInsVo(dto);
+        FeedInsProcVo dto1 = new FeedInsProcVo(dto);
 
         int feedAffectedRows = mappers.InsFeed(dto1);
         if(feedAffectedRows == 0 || dto1.getIfeed() == 0) {
@@ -70,7 +70,7 @@ public class FeedService {
                 .iuser(dto.getIuser())
                 .comment(dto.getComment())
                 .build();
-        int result = feedCommentMapper.feedcomment(pDto);
+        feedCommentMapper.feedcomment(pDto);
         return new ResVo(pDto.getIfeedComment());
     }
 
@@ -89,9 +89,9 @@ public class FeedService {
 
     public ResVo delFeed(FeedDelDto dto) {
         // 셀렉트를 통해 DB에 저장된 값이 일치하는지 확인했습니다.
-        int ifeed = mappers.selFeed(dto);
+        Integer ifeed = mappers.selFeed(dto);
         // 0. 쓴 글이 아닐 때
-        if(ifeed == 0) {
+        if(ifeed == null) {
             return new ResVo(0);
         }
         feedCommentMapper.delFeedcomment(dto);

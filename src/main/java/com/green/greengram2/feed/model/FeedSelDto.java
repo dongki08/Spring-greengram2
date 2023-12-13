@@ -11,5 +11,4 @@ public class FeedSelDto {
 
     private int startIdx;
     private int rowCount;
-
 }

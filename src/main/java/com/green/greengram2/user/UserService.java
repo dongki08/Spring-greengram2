@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 public class UserService {
     private final UserMappers mappers;
 
+    //1 성공, 2 아디없음, 3 비번틀림
     public UserSigninVo userSignin(UserSigninDto dto) {
         UserSigninProcVo procVo = mappers.seluserbyid(dto.getUid());
         UserSigninVo vo = new UserSigninVo();

@@ -11,5 +11,4 @@ public class UserInfoProcVo {
     private String upw;
     private String nm;
     private String pic;
-
 }

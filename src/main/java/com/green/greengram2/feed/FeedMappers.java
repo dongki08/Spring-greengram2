@@ -7,13 +7,13 @@ import java.util.List;
 
 @Mapper
 public interface FeedMappers {
-    int InsFeed(FeedInsVo dto);
+    int InsFeed(FeedInsProcVo dto);
 
     int insFeedPics(FeedInsProcDto dto);
 
     List<FeedSelVo> selFeedAll(FeedSelDto dto);
 
-    int selFeed(FeedDelDto dto);
+    Integer selFeed(FeedDelDto dto);
 
     int delfeed(FeedDelDto dto);
 }
